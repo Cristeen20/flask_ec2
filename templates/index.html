@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+</head>
+<body>
+    <h1>Welcome to Flask App</h1>
+    <form action="/submit" method="post" id="dataForm">
+        <label for="user_input">Enter something:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById("dataForm").onsubmit = async function (e) {
+            e.preventDefault(); // Prevent form submission
+            const formData = new FormData(this);
+            const response = await fetch("/submit", {
+                method: "POST",
+                body: formData,
+            });
+            const result = await response.json();
+            document.getElementById("response").innerText = JSON.stringify(result, null, 2);
+        };
+    </script>
+</body>
+</html>
