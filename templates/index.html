@@ -3,28 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask App</title>
+    <title>IELTS Learning App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .button-container {
+            margin-top: 40px;
+        }
+        .section-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #0073e6;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .section-button:hover {
+            background-color: #005bb5;
+        }
+        footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Flask App</h1>
-    <form action="/submit" method="post" id="dataForm">
-        <label for="user_input">Enter something:</label>
-        <input type="text" id="user_input" name="user_input" required>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="response"></div>
+    <h1>Welcome to the IELTS Learning App</h1>
+    <p>Improve your skills in Reading, Writing, and Speaking!</p>
 
-    <script>
-        document.getElementById("dataForm").onsubmit = async function (e) {
-            e.preventDefault(); // Prevent form submission
-            const formData = new FormData(this);
-            const response = await fetch("/submit", {
-                method: "POST",
-                body: formData,
-            });
-            const result = await response.json();
-            document.getElementById("response").innerText = JSON.stringify(result, null, 2);
-        };
-    </script>
+    <div class="button-container">
+        <a href="/reading" class="section-button">Reading</a>
+        <a href="/writing" class="section-button">Writing</a>
+        <a href="/speaking" class="section-button">Speaking</a>
+    </div>
+
+    <footer>
+        &copy; 2024 IELTS Learning App. All rights reserved.
+    </footer>
 </body>
 </html>
